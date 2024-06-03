@@ -13,7 +13,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: windows-latest  # Use Windows environment
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -27,11 +27,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install .
 
     - name: Run tests
       run: |
-        python -m pytest  # Adjust this command based on your test framework
+        pytest  # Adjust this command based on your test framework
 
     - name: Build project
       run: |
