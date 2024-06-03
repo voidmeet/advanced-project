@@ -35,4 +35,4 @@ jobs:
 
     - name: Build project
       run: |
-        python app.py build  # Adjust this command based on your build process
+        python setup.py build  # Adjust this command based on your build process
