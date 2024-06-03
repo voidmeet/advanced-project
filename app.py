@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, session
-from config import USER_AUTHENTICATION_ENABLED, PAYMENT_INTEGRATION_ENABLED
+import config  # Import the configuration file
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # This is needed for session management
@@ -14,7 +14,8 @@ users = {
 def index():
     return render_template('index.html')
 
-if USER_AUTHENTICATION_ENABLED:
+# Check if the login feature is turned on using the config file
+if config.USER_AUTHENTICATION_ENABLED:
     @app.route('/login', methods=['POST'])
     def login():
         username = request.form['username']
@@ -35,7 +36,8 @@ if USER_AUTHENTICATION_ENABLED:
             return jsonify({"message": f"Logged in as {session['username']}"}), 200
         return jsonify({"message": "Not logged in"}), 401
 
-if PAYMENT_INTEGRATION_ENABLED:
+# Check if the payment feature is turned on using the config file
+if config.PAYMENT_INTEGRATION_ENABLED:
     @app.route('/payment', methods=['POST'])
     def process_payment():
         # Handle payment processing logic here
