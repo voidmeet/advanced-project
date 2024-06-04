@@ -1,0 +1,3 @@
+[flake8]
+exclude = venv/*
+ignore = E302,E305,E501,W391,W293

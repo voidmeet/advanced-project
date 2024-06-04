@@ -1,0 +1,7 @@
+#!/bin/sh
+# Run flake8 to enforce coding standards
+flake8 .
+if [ $? -ne 0 ]; then
+    echo "Code standards check failed. Please fix the issues and commit again."
+    exit 1
+fi
